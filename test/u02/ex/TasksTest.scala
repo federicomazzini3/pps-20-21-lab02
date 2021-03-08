@@ -26,21 +26,37 @@ class TasksTest {
   //es 3.b
   @Test def testNotEmpty(): Unit ={
     val empty: String => Boolean = (s:String) =>  (s == "")
-    val notEmpty = neg3(empty)
 
-    assertFalse(notEmpty(""))
-    assertTrue(notEmpty("a"))
+    val neg1:(String => Boolean) => (String => Boolean) = f => !f(_)
+    val neg2: (String => Boolean) => (String => Boolean) = f => (s => !f(s))
+
+    val notEmpty1 = neg1(empty)
+    val notEmpty2 = neg2(empty)
+    val notEmpty3 = neg3(empty)
+    val notEmpty4 = neg4(empty)
+
+    assertFalse(notEmpty1(""))
+    assertTrue(notEmpty1("a"))
+    assertFalse(notEmpty2(""))
+    assertTrue(notEmpty2("a"))
+    assertFalse(notEmpty3(""))
+    assertTrue(notEmpty3("a"))
+    assertFalse(notEmpty4(""))
+    assertTrue(notEmpty4("a"))
   }
 
   //es 3.c
   @Test def testNotEmptyWithGenerics(): Unit ={
     val isZero = (x:Double) => x == 0
-    val isNotZero = negGeneric(isZero)
+    val isNotZero1 = negGeneric1(isZero)
+    val isNotZero2 = negGeneric2(isZero)
 
     assertTrue(isZero(0.0))
     assertFalse(isZero(8.0))
-    assertTrue(isNotZero(8.0))
-    assertFalse(isNotZero(0.0))
+    assertTrue(isNotZero1(8.0))
+    assertFalse(isNotZero1(0.0))
+    assertTrue(isNotZero2(8.0))
+    assertFalse(isNotZero2(0.0))
   }
 
   //es 4

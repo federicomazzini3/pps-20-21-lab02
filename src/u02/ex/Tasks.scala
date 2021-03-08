@@ -24,8 +24,8 @@ object Tasks extends App{
 
   //es 3.c
   //make neg work for generic predicates
-  def negGeneric[A](f:A => Boolean): A => Boolean = (x:A) => !f(x)
-
+  def negGeneric1[A](f:A => Boolean): A => Boolean = (x:A) => !f(x)
+  def negGeneric2[A]:(A => Boolean) => (A => Boolean) = f => !f(_)
   //es 4
   //predicate that checks whether its arguments x, y , z respect
   //the relation x ≤ y ≤ z, in 4 variants (curried/non-curried × val/def)
