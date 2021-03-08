@@ -14,6 +14,7 @@ class TasksTest {
     assertEquals("odd", parityWithDef(5))
   }
 
+  //es 3.b
   @Test def testEmpty(): Unit ={
     val empty1: String => Boolean = (s:String) =>  (s == "")
     val empty2: String => Boolean = _ == ""
@@ -21,14 +22,14 @@ class TasksTest {
 
     assertTrue(empty1(""))
     assertFalse(empty1("a"))
+    assertTrue(empty2(""))
+    assertFalse(empty2("a"))
+    assertTrue(empty3(""))
+    assertFalse(empty3("a"))
   }
 
-  //es 3.b
   @Test def testNotEmpty(): Unit ={
     val empty: String => Boolean = (s:String) =>  (s == "")
-
-    val neg1:(String => Boolean) => (String => Boolean) = f => !f(_)
-    val neg2: (String => Boolean) => (String => Boolean) = f => (s => !f(s))
 
     val notEmpty1 = neg1(empty)
     val notEmpty2 = neg2(empty)
@@ -61,10 +62,6 @@ class TasksTest {
 
   //es 4
   @Test def testCurrying(): Unit ={
-    val p1:Int=>Int=>Int=>Boolean = x => y => z => ((x <= y) && (y <= z))
-    val p2:(Int,Int,Int) => Boolean = (x,y,z) => x <= y && y <= z
-    def p3(x:Int)(y:Int)(z:Int): Boolean = x <= y && y <= z
-    def p4(x:Int,y:Int, z:Int): Boolean = x <= y && y <= z
 
     assertTrue(p1(5)(6)(7))
     assertTrue(p1(6)(6)(6))
@@ -90,13 +87,10 @@ class TasksTest {
   }
 
   @Test def testFunctionalCompositionWithGenerics(): Unit ={
-    def composeGenerics[A](f:A => A, g: A => A)(x: A): A = f(g(x))
     def reverseString(s:String): String = s.reverse
     def minus1(n:Int) = n - 1
     def mult2(n:Int) = n * 2
     assertEquals("olleh", reverseString("hello"))
-
-
     assertEquals(9, composeGenerics(minus1, mult2)(5))
     assertEquals("hello", composeGenerics(reverseString, reverseString)("hello"))
   }
@@ -109,12 +103,15 @@ class TasksTest {
   //es 7
   @Test def testShape(): Unit ={
     val rectangle:Rectangle = Rectangle(5,6)
+    val square:Square = Square(5)
+    val circle:Circle = Circle(10)
+
     assertEquals(22,perimeter(rectangle))
     assertEquals(30,area(rectangle))
-    val square:Square = Square(5)
+
     assertEquals(20,perimeter(square))
     assertEquals(25,area(square))
-    val circle:Circle = Circle(10)
+
     assertEquals(62.8,perimeter(circle),0.000001)
     assertEquals(314,area(circle))
   }
@@ -123,6 +120,7 @@ class TasksTest {
   @Test def testOptionFilter(): Unit ={
     val s1: Option[Int] = Some(5)
     val s2: Option[Int] = Some(1)
+
     assertEquals(Some[Int](5), filter(s1)(_>2))
     assertEquals(None[Int], filter(s2)(_>2))
   }
@@ -132,6 +130,7 @@ class TasksTest {
     val s2:Option[Int] = Some(0)
     val s3:Option[Int] = None()
     val greaterThan2 = (n:Int) => n > 2
+
     assertEquals(Some(true), map(s1)(greaterThan2))
     assertEquals(Some(false), map(s2)(greaterThan2))
     assertEquals(None(), map(s3)(greaterThan2))

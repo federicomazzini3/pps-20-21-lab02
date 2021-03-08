@@ -1,6 +1,6 @@
 package u02.ex
 
-object Tasks extends App{
+object Tasks {
 
   //es 3.a
   //function that return if a number x is even or odd
@@ -26,6 +26,7 @@ object Tasks extends App{
   //make neg work for generic predicates
   def negGeneric1[A](f:A => Boolean): A => Boolean = (x:A) => !f(x)
   def negGeneric2[A]:(A => Boolean) => (A => Boolean) = f => !f(_)
+
   //es 4
   //predicate that checks whether its arguments x, y , z respect
   //the relation x ≤ y ≤ z, in 4 variants (curried/non-curried × val/def)
