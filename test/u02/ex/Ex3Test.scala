@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 import u02.ex.Ex3._
 
-object Ex3Test {
+class Ex3Test {
   //es3
   @Test def testParity(){
     assertEquals("even", parityWithDef(4))

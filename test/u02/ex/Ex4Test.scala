@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.{assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 import u02.ex.Ex4._
 
-object Ex4Test {
+class Ex4Test {
   //es 4
   @Test def testCurrying(): Unit ={
     assertTrue(p1(5)(6)(7))
