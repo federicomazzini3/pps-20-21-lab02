@@ -1,6 +1,8 @@
 package u02.ex
 
-object Ex7 {
+import scala.math.Pi
+
+object Task4 {
   sealed trait Shape
   object Shape{
     case class Rectangle(side1:Double, side2:Double) extends Shape
@@ -10,13 +12,13 @@ object Ex7 {
     def perimeter(shape: Shape): Double = shape match {
       case Rectangle(side1,side2) => side1 * 2 + side2 * 2
       case Square(side) => side * 4
-      case Circle(radius) => radius * 2 * 3.14
+      case Circle(radius) => radius * 2 * Pi
     }
 
     def area(shape: Shape): Double = shape match{
       case Rectangle(side1,side2) => side1 * side2
       case Square(side) => side * side
-      case Circle(radius) => radius * radius * 3.14
+      case Circle(radius) => radius * radius * Pi
     }
   }
 }

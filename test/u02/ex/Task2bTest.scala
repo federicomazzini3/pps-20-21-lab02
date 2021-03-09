@@ -1,10 +1,29 @@
 package u02.ex
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
-import u02.ex.Ex5._
+import u02.ex.Task2b._
 
-class Ex5Test {
+class Task2bTest {
+  //es 4
+  @Test def testCurrying(): Unit ={
+    assertTrue(p1(5)(6)(7))
+    assertTrue(p1(6)(6)(6))
+    assertFalse(p1(7)(6)(7))
+
+    assertTrue(p2(5,6,7))
+    assertTrue(p2(6,6,6))
+    assertFalse(p2(7,6,7))
+
+    assertTrue(p3(5)(6)(7))
+    assertTrue(p3(6)(6)(6))
+    assertFalse(p3(7)(6)(7))
+
+    assertTrue(p4(5,6,7))
+    assertTrue(p4(6,6,6))
+    assertFalse(p4(7,6,7))
+  }
+
   //es 5
   @Test def testFunctionalComposition(): Unit ={
     def compose(f: Int => Int, g: Int => Int)(x:Int): Int = f(g(x))

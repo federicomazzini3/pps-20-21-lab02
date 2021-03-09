@@ -2,10 +2,10 @@ package u02.ex
 
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
-import u02.ex.Ex8.Option.{filter, map2,_}
-import u02.ex.Ex8._
+import u02.ex.Task5.Option.{filter, map2,_}
+import u02.ex.Task5._
 
-class Ex8Test {
+class Task5Test {
   //es 8
   @Test def testOptionFilter(): Unit ={
     val s1: Option[Int] = Some(5)

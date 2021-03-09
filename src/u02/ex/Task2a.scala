@@ -1,6 +1,6 @@
 package u02.ex
 
-object Ex3 {
+object Task2a {
 
   /*
   es 3.a
@@ -22,6 +22,7 @@ object Ex3 {
   neg function that accepts a predicate on strings and returns
   another predicate, namely, its negated form.
    */
+
 
   val neg1:(String => Boolean) => (String => Boolean) = f => !f(_)
   val neg2: (String => Boolean) => (String => Boolean) = f => (s => !f(s))

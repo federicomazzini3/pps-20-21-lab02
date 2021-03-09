@@ -4,7 +4,7 @@ package u02.ex
     Write a function to get the n-th Fibonacci number
     without and with tail recursion
  */
-object Ex6 {
+object Task3 {
 
   def fibonacci(n:Int):Int = n match {
     case 0 => 0

@@ -2,9 +2,9 @@ package u02.ex
 
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
-import u02.ex.Ex3._
+import u02.ex.Task2a._
 
-class Ex3Test {
+class Task2aTest {
   //es3
   @Test def testParity(){
     assertEquals("even", parityWithDef(4))
